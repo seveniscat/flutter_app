@@ -1,4 +1,3 @@
-
 // To parse this JSON data, do
 //
 //     final mealModel = mealModelFromJson(jsonString);
@@ -9,38 +8,45 @@ MealModel mealModelFromJson(String str) => MealModel.fromJson(json.decode(str));
 
 String mealModelToJson(MealModel data) => json.encode(data.toJson());
 
+
+
 class MealModel {
-    MealModel({
-        this.id,
-        this.categories,
-        this.title,
-        this.affordability,
-        this.complexity,
-        this.imageUrl,
-        this.duration,
-        this.ingredients,
-        this.steps,
-        this.isGlutenFree,
-        this.isVegan,
-        this.isVegetarian,
-        this.isLactoseFree,
-    });
+  static const complexs = ['简单', '中等', '困难'];
 
-    String? id;
-    List<String>? categories;
-    String? title;
-    int? affordability;
-    int? complexity;
-    String? imageUrl;
-    int? duration;
-    List<String>? ingredients;
-    List<String>? steps;
-    bool? isGlutenFree;
-    bool? isVegan;
-    bool? isVegetarian;
-    bool? isLactoseFree;
+  MealModel({
+    this.id,
+    this.categories,
+    this.title,
+    this.affordability,
+    this.complexity,
+    this.imageUrl,
+    this.duration,
+    this.ingredients,
+    this.steps,
+    this.isGlutenFree,
+    this.isVegan,
+    this.isVegetarian,
+    this.isLactoseFree,
+  });
 
-    factory MealModel.fromJson(Map<String, dynamic> json) => MealModel(
+  String? id;
+  List<String>? categories;
+  String? title;
+  int? affordability;
+  int? complexity;
+  String? imageUrl;
+  int? duration;
+  List<String>? ingredients;
+  List<String>? steps;
+  bool? isGlutenFree;
+  bool? isVegan;
+  bool? isVegetarian;
+  bool? isLactoseFree;
+
+  String? complexDes;
+
+  factory MealModel.fromJson(Map<String, dynamic> json) {
+    MealModel model = MealModel(
         id: json["id"],
         categories: List<String>.from(json["categories"].map((x) => x)),
         title: json["title"],
@@ -54,9 +60,13 @@ class MealModel {
         isVegan: json["isVegan"],
         isVegetarian: json["isVegetarian"],
         isLactoseFree: json["isLactoseFree"],
-    );
+      );
 
-    Map<String, dynamic> toJson() => {
+      model.complexDes = MealModel.complexs[model.complexity!];
+      return model;
+  }
+
+  Map<String, dynamic> toJson() => {
         "id": id,
         "categories": List<dynamic>.from(categories!.map((x) => x)),
         "title": title,
@@ -70,7 +80,7 @@ class MealModel {
         "isVegan": isVegan,
         "isVegetarian": isVegetarian,
         "isLactoseFree": isLactoseFree,
-    };
+      };
 }
 
 

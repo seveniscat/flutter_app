@@ -1,4 +1,4 @@
-import 'package:flutter_app/core/models/meal_model.dart';
+import 'package:flutter_app/pages/meals/models/meal_model.dart';
 import 'package:flutter_app/core/services/http_request.dart';
 
 class MealRequest {

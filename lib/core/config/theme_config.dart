@@ -28,8 +28,6 @@ class MyTheme {
 
     textTheme: TextTheme(
       bodyText1: TextStyle(fontSize: 14),
-      // bodyText2: 
-      // headline1: 
 
     ),
   );

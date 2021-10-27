@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/core/models/category_model.dart';
+import 'package:flutter_app/pages/meals/models/meal_model.dart';
 
 import 'detail_content.dart';
 
@@ -10,13 +11,13 @@ class DetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final category =
-        ModalRoute.of(context)?.settings.arguments as CategoryModel;
+    final meal = ModalRoute.of(context)?.settings.arguments as MealModel;
 
     return Scaffold(
         appBar: AppBar(
-          title: Text(category.title ?? "title"),
+          // title: Text(category.title ?? "title"),
+          title: Text(meal.title!),
         ),
-        body: DetailContent());
+        body: DetailContent(meal));
   }
 }

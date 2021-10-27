@@ -1,9 +1,11 @@
 import 'dart:developer';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/core/models/category_model.dart';
-import 'package:flutter_app/core/models/meal_model.dart';
+import 'package:flutter_app/pages/meals/models/meal_model.dart';
 import 'package:flutter_app/core/viewmodel/meal_view_model.dart';
+import 'package:flutter_app/share/widgets/meal_list_tile.dart';
 import 'package:provider/provider.dart';
 
 class MealContent extends StatelessWidget {
@@ -17,23 +19,18 @@ class MealContent extends StatelessWidget {
     return Selector<MealViewModel, List<MealModel>>(
       selector: (ctx, viewmodel) {
         final totoalMeals = viewmodel.meals;
-        return totoalMeals.where((element) {
-          return (element.categories!.contains(itemModel.id));
-        }).toList();
+        return totoalMeals
+            .where((element) => (element.categories!.contains(itemModel.id)))
+            .toList();
       },
       builder: (ctx, meals, child) {
-
         return ListView.builder(
             itemCount: meals.length,
             itemBuilder: (ctx, index) {
-              final mealTitle = meals[index].title;
-              return Container(
-                child: Text(mealTitle!),
-                margin: EdgeInsets.all(15),
-                alignment: Alignment.center,
-              );
+              return MealListTile(meals[index]);
             });
       },
+      shouldRebuild: (pre, nex) => !listEquals(pre, nex),
     );
 
     // return Consumer<MealViewModel>(builder: (ctx, vm, child) {

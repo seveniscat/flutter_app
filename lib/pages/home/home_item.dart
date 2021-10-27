@@ -34,7 +34,7 @@ class HomePageItem extends StatelessWidget {
       ),
       onTap: (){
         // 进入详情页
-        Navigator.pushNamed(context, MealPage.routerName, arguments: itemModel);
+        Navigator.of(context).pushNamed(MealPage.routerName, arguments: itemModel);
       },
     );
   }

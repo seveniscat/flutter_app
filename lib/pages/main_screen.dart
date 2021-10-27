@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/config/tabbar_config.dart';
+import 'package:flutter_app/core/config/tabbar_config.dart';
 
 class MainScreen extends StatefulWidget {
   static const routerName = '/';

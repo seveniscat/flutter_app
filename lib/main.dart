@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/config/route.dart';
-import 'package:flutter_app/config/theme_config.dart';
+import 'package:flutter_app/core/config/route.dart';
+import 'package:flutter_app/core/config/theme_config.dart';
 import 'package:flutter_app/core/viewmodel/meal_view_model.dart';
 import 'package:provider/provider.dart';
 
