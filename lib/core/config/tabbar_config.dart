@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/pages/collection.dart';
+import 'package:flutter_app/pages/favor/collection.dart';
 import 'package:flutter_app/pages/home/home.dart';
 
 const List<Widget> tabbarPages = [

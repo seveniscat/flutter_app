@@ -11,6 +11,14 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('广场'),
+        leading: IconButton(onPressed: (){
+          Scaffold.of(context).openDrawer();
+        }, icon: Icon(Icons.settings)),
+        // leading: Builder(builder: (context){
+        //   return IconButton(onPressed: (){
+        //     Scaffold.of(context).openDrawer();
+        //   }, icon: Icon(Icons.build));
+        // },),
       ),
       body: const HomeContent(),
     );

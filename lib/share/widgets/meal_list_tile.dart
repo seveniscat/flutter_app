@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/core/viewmodel/favor_view_model.dart';
 import 'package:flutter_app/pages/detail/detail.dart';
 import 'package:flutter_app/pages/meals/models/meal_model.dart';
+import 'package:provider/provider.dart';
 
 class MealListTile extends StatelessWidget {
   final MealModel meal;
@@ -66,7 +68,7 @@ class MealListTile extends StatelessWidget {
                   OperationItemWidget(Icon(Icons.timer), '${meal.duration} 分钟'),
                   OperationItemWidget(
                       Icon(Icons.pedal_bike), '${meal.complexDes}'),
-                  OperationItemWidget(Icon(Icons.favorite_border), '未收藏'),
+                  buildOperationItem(meal),
                 ],
               ),
             )
@@ -74,6 +76,24 @@ class MealListTile extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Widget buildOperationItem(MealModel meal) {
+    return Consumer<MealFavorViewModel>(builder: (context, favorVM, child) {
+      bool isfavor = favorVM.isFavor(meal);
+      return GestureDetector(
+        child: OperationItemWidget(
+            Icon(isfavor ? Icons.favorite : Icons.favorite_border),
+            isfavor ? '已收藏' : '收藏'),
+        onTap: () {
+          if (isfavor) {
+            favorVM.removeMeal(meal);
+          } else {
+            favorVM.addMeal(meal);
+          }
+        },
+      );
+    });
   }
 }
 

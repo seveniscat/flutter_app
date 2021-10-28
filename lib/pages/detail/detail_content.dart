@@ -19,25 +19,35 @@ class DetailContent extends StatelessWidget {
             Container(
               child: Image.network(meal.imageUrl!),
             ),
-    
+
             buildMakeTitle('制作材料'),
-    
+
             Container(
               margin: EdgeInsets.all(10),
-              padding: EdgeInsets.all(10),
-              color: Colors.white,
+              padding: EdgeInsets.all(5),
+              // color: Colors.white,
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.grey),
+                borderRadius: BorderRadius.circular(8),
+                color: Colors.white
+
+              ),
               // height: 200,
               child: ListView.builder(
+                physics: NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
                   itemCount: meal.ingredients!.length,
                   itemBuilder: (context, index) {
-                    return Container(
+                    return Card(
                       color: Colors.orange,
-                      height: 144,
                       child: Text(meal.ingredients![index]),
                     );
                   }),
-            )
+            ),
+
+            buildMakeTitle('制作步骤'),
+
+
           ],
         ),
       ),

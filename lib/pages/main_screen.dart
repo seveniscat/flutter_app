@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/core/config/tabbar_config.dart';
+import 'package:flutter_app/share/widgets/drawer_content.dart';
 
 class MainScreen extends StatefulWidget {
   static const routerName = '/';
@@ -20,6 +21,7 @@ class _MainScreenState extends State<MainScreen> {
         children: tabbarPages,
         index: _currentIndex,
       ),
+      drawer: Drawer(child: DrawerContent()),
       bottomNavigationBar: BottomNavigationBar(
         items: tabbarItems,
         currentIndex: _currentIndex,
